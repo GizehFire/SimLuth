@@ -27,7 +27,7 @@ func _ready():
 	aes.start(AESContext.MODE_ECB_ENCRYPT, key.to_utf8())
 	var encrypted = aes.update(data.to_utf8())
 	aes.finish()
-	print(encrypted.get_string_from_ascii())
+	print(encrypted)
 		
 	# Decrypt ECB
 	aes.start(AESContext.MODE_ECB_DECRYPT, key.to_utf8())
@@ -115,20 +115,30 @@ func _on_EnCryptButton_pressed():
 		$MsgDialog.popup()
 		
 		return
-		
+	
+	var aes_two = AESContext.new()
+	
 	var MyKey = $KeyFieldLine.text 			# Key must be either 16 or 32 bytes.
-	var MyText = $InputText.text		# Info/Text/Message
-# warning-ignore:unused_variable
-	var myEncrypted
+	var MyText = $InputText.text			# Info/Text/Message
 	
 	# Daten (MyText) mit MyKey (Password) verschluesseln
 	
-	aes.start(AESContext.MODE_ECB_ENCRYPT, MyKey.to_utf8())
-	myEncrypted = aes.update(MyText.to_utf8())
-	aes.finish()
+	# MyKey = "My secret text!!"
+	# MyText = "My secret text!!"
 	
-	$InputText.text = ""	# Text Feld leeren
+	print(MyKey)
+	print(MyText)
+		
+	aes_two.start(AESContext.MODE_ECB_ENCRYPT, MyKey.to_utf8())
+	var myEncrypted = aes_two.update(MyText.to_utf8())
+	aes_two.finish()
 	
+	print(myEncrypted)
+	
+	# var myTextStr:String = myEncrypted.get_string_from_utf8()	
+	# $Output.text = MyText.to_utf8()
+	# print(myEncrypted.get_string_from_ascii())
+	# $Output.text.to_utf8() = myEncrypted
 	
 	pass # Replace with function body.
 

@@ -6,7 +6,7 @@
 bg_color = Color( 0.152941, 0.129412, 0.831373, 1 )
 
 [node name="Control" type="Control"]
-margin_right = 1024.0
+margin_right = 800.0
 margin_bottom = 600.0
 script = ExtResource( 1 )
 
@@ -15,10 +15,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.533
 anchor_bottom = 1.0
-margin_left = 12.0
-margin_top = -386.0
-margin_right = 127.208
-margin_bottom = -349.0
+margin_left = 124.0
+margin_top = -388.0
+margin_right = 239.208
+margin_bottom = -351.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="InfoMSG" type="Label" parent="InfoBox"]
@@ -35,25 +35,25 @@ margin_top = 37.0
 margin_bottom = 92.0
 
 [node name="OpenButton" type="Button" parent="InfoBox/VBoxContainer"]
-margin_right = 149.0
+margin_right = 141.0
 margin_bottom = 20.0
 text = "Open"
 
 [node name="SaveButton" type="Button" parent="InfoBox/VBoxContainer"]
 margin_top = 24.0
-margin_right = 149.0
+margin_right = 141.0
 margin_bottom = 44.0
 text = "Save"
 
 [node name="ResetButton" type="Button" parent="InfoBox/VBoxContainer"]
 margin_top = 48.0
-margin_right = 149.0
+margin_right = 141.0
 margin_bottom = 68.0
 text = "Reset"
 
 [node name="ExitButton" type="Button" parent="InfoBox/VBoxContainer"]
 margin_top = 72.0
-margin_right = 149.0
+margin_right = 141.0
 margin_bottom = 92.0
 text = "Exit"
 
@@ -103,7 +103,14 @@ margin_left = 88.0
 margin_top = 191.0
 margin_right = 152.0
 margin_bottom = 205.0
-text = "Info:"
+text = "Input:"
+
+[node name="InfoResultat" type="Label" parent="."]
+margin_left = 88.0
+margin_top = 360.0
+margin_right = 152.0
+margin_bottom = 374.0
+text = "Output:"
 
 [node name="DeCryptButton" type="Button" parent="."]
 margin_left = 597.0
@@ -139,9 +146,9 @@ Show:"
 
 [node name="CheckButton" type="CheckButton" parent="."]
 margin_left = 437.0
-margin_top = 151.0
+margin_top = 154.0
 margin_right = 513.0
-margin_bottom = 191.0
+margin_bottom = 194.0
 focus_mode = 0
 enabled_focus_mode = 0
 
@@ -151,6 +158,13 @@ margin_top = 161.0
 margin_right = 431.0
 margin_bottom = 185.0
 secret = true
+
+[node name="Output" type="TextEdit" parent="."]
+margin_left = 88.0
+margin_top = 386.0
+margin_right = 490.0
+margin_bottom = 518.0
+readonly = true
 
 [connection signal="pressed" from="InfoBox/VBoxContainer/OpenButton" to="." method="_on_OpenButton_pressed"]
 [connection signal="pressed" from="InfoBox/VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
