@@ -166,6 +166,15 @@ margin_right = 490.0
 margin_bottom = 518.0
 readonly = true
 
+[node name="CounterButton" type="Button" parent="."]
+anchor_top = 11.25
+anchor_bottom = 11.25
+margin_left = 524.0
+margin_top = -6364.0
+margin_right = 666.0
+margin_bottom = -6336.0
+text = "Counter"
+
 [connection signal="pressed" from="InfoBox/VBoxContainer/OpenButton" to="." method="_on_OpenButton_pressed"]
 [connection signal="pressed" from="InfoBox/VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="InfoBox/VBoxContainer/ResetButton" to="." method="_on_ResetButton_pressed"]
@@ -174,3 +183,4 @@ readonly = true
 [connection signal="file_selected" from="OpenDialog" to="." method="_on_OpenDialog_file_selected"]
 [connection signal="pressed" from="EnCryptButton" to="." method="_on_EnCryptButton_pressed"]
 [connection signal="pressed" from="CheckButton" to="." method="_on_CheckButton_pressed"]
+[connection signal="pressed" from="CounterButton" to="." method="_on_CounterButton_pressed"]

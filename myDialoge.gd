@@ -1,16 +1,16 @@
 extends Control
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 onready var OpenButton = $InfoBox/VBoxContainer/OpenButton
 onready var MSG_Text = $InfoBox/InfoMSG
 
 var aes = AESContext.new()
 var my_password:String
 
+const Divider16: int = 16
+const Divider32: int = 32
+
 # Called when the node enters the scene tree for the first time.
+
 func _ready():
 	
 	OpenButton.grab_focus()
@@ -20,23 +20,44 @@ func _ready():
 	$OpenDialog.add_filter("*.txt")
 	$SaveDialog.add_filter("*.txt")
 	
-	var key = "My secret key!!!" # Key must be either 16 or 32 bytes.
-	var data = "My secret text!!" # Data size must be multiple of 16 bytes, apply padding if needed.
+#	var key = "My secret key!!!" # Key must be either 16 or 32 bytes.
+#	var data = "My secret text!!" # Data size must be multiple of 16 bytes, apply padding if needed.
+#
+#	# Encrypt ECB
+#	aes.start(AESContext.MODE_ECB_ENCRYPT, key.to_utf8())
+#	var encrypted = aes.update(data.to_utf8())
+#	aes.finish()
+#	print(encrypted)
+#
+#	# Decrypt ECB
+#	aes.start(AESContext.MODE_ECB_DECRYPT, key.to_utf8())
+#	var decrypted = aes.update(encrypted)
+#	aes.finish()
+#	# Check ECB
+#	assert(decrypted == data.to_utf8())
+#	print(decrypted.get_string_from_ascii())
+	pass
 	
-	# Encrypt ECB
-	aes.start(AESContext.MODE_ECB_ENCRYPT, key.to_utf8())
-	var encrypted = aes.update(data.to_utf8())
-	aes.finish()
-	print(encrypted)
+func Date_Encrypt():
+	
+	var aes_two = AESContext.new()
+	
+	var MyKey = $KeyFieldLine.text 			# Key must be either 16 or 32 bytes.
+	var MyText = $InputText.text			# Info/Text/Message
+	
+	# Daten (MyText) mit MyKey (Password) verschluesseln
+	
+	print(MyKey)
+	print(MyText)
 		
-	# Decrypt ECB
-	aes.start(AESContext.MODE_ECB_DECRYPT, key.to_utf8())
-	var decrypted = aes.update(encrypted)
-	aes.finish()
-	# Check ECB
-	assert(decrypted == data.to_utf8())
-	print(decrypted.get_string_from_ascii())
-
+	aes_two.start(AESContext.MODE_ECB_ENCRYPT, MyKey.to_utf8())
+	var myEncrypted = aes_two.update(MyText.to_utf8())
+	aes_two.finish()
+	
+	print(myEncrypted)
+	
+	pass
+	
 func _on_OpenButton_pressed():
 	
 	MSG_Text.text = "Pressed 'Open'"
@@ -116,29 +137,7 @@ func _on_EnCryptButton_pressed():
 		
 		return
 	
-	var aes_two = AESContext.new()
-	
-	var MyKey = $KeyFieldLine.text 			# Key must be either 16 or 32 bytes.
-	var MyText = $InputText.text			# Info/Text/Message
-	
-	# Daten (MyText) mit MyKey (Password) verschluesseln
-	
-	# MyKey = "My secret text!!"
-	# MyText = "My secret text!!"
-	
-	print(MyKey)
-	print(MyText)
-		
-	aes_two.start(AESContext.MODE_ECB_ENCRYPT, MyKey.to_utf8())
-	var myEncrypted = aes_two.update(MyText.to_utf8())
-	aes_two.finish()
-	
-	print(myEncrypted)
-	
-	# var myTextStr:String = myEncrypted.get_string_from_utf8()	
-	# $Output.text = MyText.to_utf8()
-	# print(myEncrypted.get_string_from_ascii())
-	# $Output.text.to_utf8() = myEncrypted
+	Date_Encrypt()
 	
 	pass # Replace with function body.
 
@@ -162,5 +161,20 @@ func _on_CheckButton_pressed():
 		$KeyFieldLine.secret = false
 		
 		return
+	
+	pass # Replace with function body.
+
+
+func _on_CounterButton_pressed():
+	
+	var Length_Counter:int
+	var Lenght_Char:String
+	
+	
+	Lenght_Char = $InputText.text
+	Length_Counter = Lenght_Char.length()
+	
+	$MsgDialog.dialog_text = "TextLaenge: " + str(Length_Counter) + "\n"
+	$MsgDialog.popup()
 	
 	pass # Replace with function body.
