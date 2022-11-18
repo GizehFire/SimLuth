@@ -17,7 +17,7 @@ anchor_right = 0.533
 anchor_bottom = 1.0
 margin_left = 124.0
 margin_top = -388.0
-margin_right = 239.208
+margin_right = 249.6
 margin_bottom = -351.0
 custom_styles/panel = SubResource( 1 )
 
@@ -35,25 +35,25 @@ margin_top = 37.0
 margin_bottom = 92.0
 
 [node name="OpenButton" type="Button" parent="InfoBox/VBoxContainer"]
-margin_right = 141.0
+margin_right = 152.0
 margin_bottom = 20.0
 text = "Open"
 
 [node name="SaveButton" type="Button" parent="InfoBox/VBoxContainer"]
 margin_top = 24.0
-margin_right = 141.0
+margin_right = 152.0
 margin_bottom = 44.0
 text = "Save"
 
 [node name="ResetButton" type="Button" parent="InfoBox/VBoxContainer"]
 margin_top = 48.0
-margin_right = 141.0
+margin_right = 152.0
 margin_bottom = 68.0
 text = "Reset"
 
 [node name="ExitButton" type="Button" parent="InfoBox/VBoxContainer"]
 margin_top = 72.0
-margin_right = 141.0
+margin_right = 152.0
 margin_bottom = 92.0
 text = "Exit"
 
@@ -170,10 +170,17 @@ readonly = true
 anchor_top = 11.25
 anchor_bottom = 11.25
 margin_left = 524.0
-margin_top = -6364.0
-margin_right = 666.0
-margin_bottom = -6336.0
+margin_top = -6263.0
+margin_right = 676.0
+margin_bottom = -6235.0
 text = "Counter"
+
+[node name="AutoFillButton" type="Button" parent="."]
+margin_left = 524.0
+margin_top = 386.0
+margin_right = 676.0
+margin_bottom = 406.0
+text = "Auto-fill texts and key"
 
 [connection signal="pressed" from="InfoBox/VBoxContainer/OpenButton" to="." method="_on_OpenButton_pressed"]
 [connection signal="pressed" from="InfoBox/VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
@@ -184,3 +191,4 @@ text = "Counter"
 [connection signal="pressed" from="EnCryptButton" to="." method="_on_EnCryptButton_pressed"]
 [connection signal="pressed" from="CheckButton" to="." method="_on_CheckButton_pressed"]
 [connection signal="pressed" from="CounterButton" to="." method="_on_CounterButton_pressed"]
+[connection signal="pressed" from="AutoFillButton" to="." method="_on_AutoFillButton_pressed"]

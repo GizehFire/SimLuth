@@ -167,14 +167,31 @@ func _on_CheckButton_pressed():
 
 func _on_CounterButton_pressed():
 	
-	var Length_Counter:int
+	var Length_Counter_Text:int
+	var Length_Counter_Pass_Key:int
 	var Lenght_Char:String
 	
-	
+	# Zeichenlaenge fuer Inhalt
 	Lenght_Char = $InputText.text
-	Length_Counter = Lenght_Char.length()
+	Length_Counter_Text = Lenght_Char.length()
 	
-	$MsgDialog.dialog_text = "TextLaenge: " + str(Length_Counter) + "\n"
+	# Zeichenlaenge fuer Passwort
+	Lenght_Char = $KeyFieldLine.text
+	Length_Counter_Pass_Key = Lenght_Char.length()
+	
+	# Zeichenlaenge für Inhalt und Passwort auf dem Dialogsfeld
+	# anzeigen:
+	
+	$MsgDialog.dialog_text = "TextLaenge: " + str(Length_Counter_Text) \
+	+ "\n" + "PasswordLaenge: " + str(Length_Counter_Pass_Key) + "\n"
+	
 	$MsgDialog.popup()
+	
+	pass # Replace with function body.
+
+
+func _on_AutoFillButton_pressed():
+	
+	
 	
 	pass # Replace with function body.
