@@ -88,6 +88,8 @@ func _on_ResetButton_pressed():
 	$KeyFieldLine.secret = true
 	# Schalte umsetzen
 	$CheckButton.pressed = false
+	# Textfeld (Ausgabefeld) leeren
+	$Output.text =""
 	
 	pass # Replace with function body.
 
@@ -192,6 +194,17 @@ func _on_CounterButton_pressed():
 
 func _on_AutoFillButton_pressed():
 	
+	# von "!" bis "~"
+	# 21h (33d) - 7Eh (126d) Ascii - Code (UTF8)
 	
+	var myChar:int = 33  
+		
+	var random = RandomNumberGenerator.new()
+	
+	random.randomize()
+	
+	myChar = myChar + random.randi() % 93
+	
+	$Output.text = $Output.text + char(myChar)
 	
 	pass # Replace with function body.
