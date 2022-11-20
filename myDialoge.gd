@@ -66,7 +66,6 @@ func _on_OpenButton_pressed():
 	
 	pass # Replace with function body.
 
-
 func _on_SaveButton_pressed():
 	
 	MSG_Text.text = "Pressed 'Save'"
@@ -93,7 +92,6 @@ func _on_ResetButton_pressed():
 	
 	pass # Replace with function body.
 
-
 func _on_ExitButton_pressed():
 	
 	MSG_Text.text = "Pressed 'Exit'"
@@ -114,7 +112,6 @@ func _on_SaveDialog_file_selected(path):
 	f.open(path,2)
 	f.store_string($InputText.text)
 	f.close()
-
 
 func _on_EnCryptButton_pressed():
 	
@@ -166,7 +163,6 @@ func _on_CheckButton_pressed():
 	
 	pass # Replace with function body.
 
-
 func _on_CounterButton_pressed():
 	
 	var Length_Counter_Text:int
@@ -190,21 +186,29 @@ func _on_CounterButton_pressed():
 	$MsgDialog.popup()
 	
 	pass # Replace with function body.
-
-
-func _on_AutoFillButton_pressed():
+	
+func fuellung(var counter_char:int):
 	
 	# von "!" bis "~"
 	# 21h (33d) - 7Eh (126d) Ascii - Code (UTF8)
 	
+	var input_text:String
 	var myChar:int = 33  
-		
 	var random = RandomNumberGenerator.new()
 	
-	random.randomize()
+	for myCounter in range(counter_char):
+		
+		random.randomize()
+		myChar = myChar + random.randi() % 93
+		
+		input_text = input_text + char(myChar)		
+		myChar = 33
 	
-	myChar = myChar + random.randi() % 93
+	return input_text
 	
-	$Output.text = $Output.text + char(myChar)
+func _on_AutoFillButton_pressed():
+	
+	$KeyFieldLine.text = fuellung(16)
+	$InputText.text = fuellung(128)
 	
 	pass # Replace with function body.
