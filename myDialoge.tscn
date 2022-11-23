@@ -182,6 +182,61 @@ margin_right = 676.0
 margin_bottom = 406.0
 text = "Auto-fill texts and key"
 
+[node name="DetailsDialog" type="WindowDialog" parent="."]
+margin_left = 800.0
+margin_top = 24.0
+margin_right = 1030.0
+margin_bottom = 129.0
+window_title = "Set Generate"
+
+[node name="MCountKeyFieldCheckButton2" type="CheckButton" parent="DetailsDialog"]
+margin_left = 148.0
+margin_top = 10.0
+margin_right = 224.0
+margin_bottom = 50.0
+
+[node name="MCountTextCheckButton" type="CheckButton" parent="DetailsDialog"]
+margin_left = 148.0
+margin_top = 53.0
+margin_right = 224.0
+margin_bottom = 93.0
+
+[node name="DetailsButton" type="Button" parent="."]
+margin_left = 621.0
+margin_top = 409.0
+margin_right = 678.0
+margin_bottom = 429.0
+text = "Details"
+
+[node name="HSlider" type="HSlider" parent="."]
+margin_left = 88.0
+margin_top = 108.0
+margin_right = 431.0
+margin_bottom = 131.0
+min_value = 16.0
+max_value = 4096.0
+value = 16.0
+tick_count = 60
+ticks_on_borders = true
+
+[node name="LabelCounterSlider" type="Label" parent="HSlider"]
+margin_top = -64.0
+margin_right = 58.0
+margin_bottom = -50.0
+text = "Counter: "
+
+[node name="TextEditHSliderCounter" type="TextEdit" parent="HSlider"]
+margin_top = -34.0
+margin_right = 64.0
+margin_bottom = -10.0
+context_menu_enabled = false
+shortcut_keys_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
 [connection signal="pressed" from="InfoBox/VBoxContainer/OpenButton" to="." method="_on_OpenButton_pressed"]
 [connection signal="pressed" from="InfoBox/VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="InfoBox/VBoxContainer/ResetButton" to="." method="_on_ResetButton_pressed"]
@@ -192,3 +247,6 @@ text = "Auto-fill texts and key"
 [connection signal="pressed" from="CheckButton" to="." method="_on_CheckButton_pressed"]
 [connection signal="pressed" from="CounterButton" to="." method="_on_CounterButton_pressed"]
 [connection signal="pressed" from="AutoFillButton" to="." method="_on_AutoFillButton_pressed"]
+[connection signal="pressed" from="DetailsButton" to="." method="_on_DetailsButton_pressed"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="text_changed" from="HSlider/TextEditHSliderCounter" to="." method="_on_TextEditHSliderCounter_text_changed"]
