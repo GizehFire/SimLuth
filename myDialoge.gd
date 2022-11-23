@@ -18,24 +18,8 @@ func _ready():
 	# Bestimmte Datei Erweiterung (.txt) voreinstellen.
 	
 	$OpenDialog.add_filter("*.txt")
-	$SaveDialog.add_filter("*.txt")
+	$SaveDialog.add_filter("*.txt")	
 	
-#	var key = "My secret key!!!" # Key must be either 16 or 32 bytes.
-#	var data = "My secret text!!" # Data size must be multiple of 16 bytes, apply padding if needed.
-#
-#	# Encrypt ECB
-#	aes.start(AESContext.MODE_ECB_ENCRYPT, key.to_utf8())
-#	var encrypted = aes.update(data.to_utf8())
-#	aes.finish()
-#	print(encrypted)
-#
-#	# Decrypt ECB
-#	aes.start(AESContext.MODE_ECB_DECRYPT, key.to_utf8())
-#	var decrypted = aes.update(encrypted)
-#	aes.finish()
-#	# Check ECB
-#	assert(decrypted == data.to_utf8())
-#	print(decrypted.get_string_from_ascii())
 	pass
 	
 func Date_Encrypt():
@@ -212,3 +196,66 @@ func _on_AutoFillButton_pressed():
 	$InputText.text = fuellung(128)
 	
 	pass # Replace with function body.
+
+
+func _on_DetailsButton_pressed():
+	
+	$DetailsDialog.popup()
+	
+	pass # Replace with function body.
+
+
+func _on_HSlider_value_changed(value):
+	
+	var werte:int
+	
+	werte = $HSlider.value
+	
+	$HSlider/TextEditHSliderCounter.text = str(werte)
+	
+	pass # Replace with function body.
+
+
+func _on_TextEditHSliderCounter_text_changed():
+	
+	var counter_last_char:int
+	var tastencode:int
+	var textswap:String
+	var textswap2:String
+	
+	var myKeyPr = InputEventKey.new()
+	
+	#counter_last_char = $HSlider/TextEditHSliderCounter.text.length()
+	#textswap = $HSlider/TextEditHSliderCounter.text
+	
+	#if not $HSlider/TextEditHSliderCounter.text.is_valid_integer():
+		
+		#textswap.erase(counter_last_char-1,1)
+		#$HSlider/TextEditHSliderCounter.text = textswap
+		#$HSlider/TextEditHSliderCounter.undo()
+	
+	#if myKeyPr.scancode() == 0:
+	
+	#print(Input.get_scancode())
+	
+	# print("Log: " + str(counter_last_char) + " " + str(tastencode))
+	
+	#for _tastencode in range(52):
+		
+	#if Input.is_key_pressed(48) in range(52):
+	# print("Log: " + "Pressed Number 0")
+	
+	if Input.is_key_pressed(48 - 57):
+		_input(42)
+	
+	pass # Replace with function body.
+	
+func _input(ev):
+	
+	var tastencode:String
+	
+	if ev is InputEventKey:
+		if ev.scancode >= 48 and ev.scancode <= 57:
+			#print("Taste 0 bis 9")
+			print(char(ev.scancode))
+	pass
