@@ -3,6 +3,10 @@ extends Control
 onready var OpenButton = $InfoBox/VBoxContainer/OpenButton
 onready var MSG_Text = $InfoBox/InfoMSG
 
+onready var SpinKasten: SpinBox = $DetailsDialog/HSlider/SpinBox
+onready var Regler: HSlider = $DetailsDialog/HSlider
+onready var DetailsMSG: WindowDialog = $DetailsDialog
+
 var aes = AESContext.new()
 var my_password:String
 
@@ -73,6 +77,8 @@ func _on_ResetButton_pressed():
 	$CheckButton.pressed = false
 	# Textfeld (Ausgabefeld) leeren
 	$Output.text =""
+	# Regler auf Standart zurück setzen
+	Regler.value = Regler.min_value
 	
 	pass # Replace with function body.
 
@@ -193,69 +199,33 @@ func fuellung(var counter_char:int):
 func _on_AutoFillButton_pressed():
 	
 	$KeyFieldLine.text = fuellung(16)
-	$InputText.text = fuellung(128)
+	$InputText.text = fuellung(Regler.value)
 	
 	pass # Replace with function body.
 
 
 func _on_DetailsButton_pressed():
 	
-	$DetailsDialog.popup()
+	DetailsMSG.popup()
 	
 	pass # Replace with function body.
 
 
 func _on_HSlider_value_changed(value):
 	
-	var werte:int
+	SpinKasten.value = Regler.value
 	
-	werte = $HSlider.value
+	pass # Replace with function body.
 	
-	$HSlider/TextEditHSliderCounter.text = str(werte)
+func _on_SpinBox_value_changed(value):
+	
+	Regler.value = SpinKasten.value
 	
 	pass # Replace with function body.
 
 
-func _on_TextEditHSliderCounter_text_changed():
+func _on_Button_pressed():
 	
-	var counter_last_char:int
-	var tastencode:int
-	var textswap:String
-	var textswap2:String
-	
-	var myKeyPr = InputEventKey.new()
-	
-	#counter_last_char = $HSlider/TextEditHSliderCounter.text.length()
-	#textswap = $HSlider/TextEditHSliderCounter.text
-	
-	#if not $HSlider/TextEditHSliderCounter.text.is_valid_integer():
-		
-		#textswap.erase(counter_last_char-1,1)
-		#$HSlider/TextEditHSliderCounter.text = textswap
-		#$HSlider/TextEditHSliderCounter.undo()
-	
-	#if myKeyPr.scancode() == 0:
-	
-	#print(Input.get_scancode())
-	
-	# print("Log: " + str(counter_last_char) + " " + str(tastencode))
-	
-	#for _tastencode in range(52):
-		
-	#if Input.is_key_pressed(48) in range(52):
-	# print("Log: " + "Pressed Number 0")
-	
-	if Input.is_key_pressed(48 - 57):
-		_input(42)
+	DetailsMSG.hide()
 	
 	pass # Replace with function body.
-	
-func _input(ev):
-	
-	var tastencode:String
-	
-	if ev is InputEventKey:
-		if ev.scancode >= 48 and ev.scancode <= 57:
-			#print("Taste 0 bis 9")
-			print(char(ev.scancode))
-	pass
