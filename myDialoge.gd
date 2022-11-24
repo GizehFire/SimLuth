@@ -198,7 +198,7 @@ func generate_char (var return_length:int) -> String:
 	# 21h (33d) - 7Eh (126d) Ascii - Code (UTF8)
 	
 	if return_length <= 0:
-		printerr("fuellung was called with return_length %d" % return_length)
+		printerr("generate_char was called with return_length %d" % return_length)
 		return ""
 	
 	var output:String	
