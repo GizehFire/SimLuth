@@ -155,6 +155,7 @@ func _on_CheckButton_pressed():
 
 func _on_CounterButton_pressed():
 	
+	
 	var Length_Counter_Text:int
 	var Length_Counter_Pass_Key:int
 	var Lenght_Char:String
@@ -177,39 +178,53 @@ func _on_CounterButton_pressed():
 	
 	pass # Replace with function body.
 	
-func fuellung(var counter_char:int):
+# Hinweis:
+#
+# Date:		24. November 2022
+#
+# Die Funktion "generate_char" wurde unterstützend ergänzt von:
+# einem User "whiteshampoo" aus dem Discord Kanal "Deutsche Godot Community"
+#
+# Link zu den Discord-Kanal:
+#	
+#	"https://discord.com/channels/553242711109533729/584063445150728215"
+#
+const ASCII_START: int = ord("!")
+const ASCII_END: int = ord("~")
+	
+func generate_char (var return_length:int) -> String:
 	
 	# von "!" bis "~"
 	# 21h (33d) - 7Eh (126d) Ascii - Code (UTF8)
 	
-	var input_text:String
-	var myChar:int = 33  
-	var random = RandomNumberGenerator.new()
+	if return_length <= 0:
+		printerr("fuellung was called with return_length %d" % return_length)
+		return ""
 	
-	for myCounter in range(counter_char):
+	var output:String	
+	var random: RandomNumberGenerator = RandomNumberGenerator.new()
+	
+	
+	random.randomize()
+	
+	for __ in range(return_length):
 		
-		random.randomize()
-		myChar = myChar + random.randi() % 93
-		
-		input_text = input_text + char(myChar)		
-		myChar = 33
+		output += char(random.randi_range(ASCII_START, ASCII_END))
 	
-	return input_text
-	
+	return output
+
 func _on_AutoFillButton_pressed():
 	
-	$KeyFieldLine.text = fuellung(16)
-	$InputText.text = fuellung(Regler.value)
+	$KeyFieldLine.text = generate_char(16)
+	$InputText.text = generate_char(Regler.value)
 	
 	pass # Replace with function body.
-
 
 func _on_DetailsButton_pressed():
 	
 	DetailsMSG.popup()
 	
 	pass # Replace with function body.
-
 
 func _on_HSlider_value_changed(value):
 	
@@ -222,7 +237,6 @@ func _on_SpinBox_value_changed(value):
 	Regler.value = SpinKasten.value
 	
 	pass # Replace with function body.
-
 
 func _on_Button_pressed():
 	
