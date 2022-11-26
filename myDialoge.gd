@@ -1,7 +1,7 @@
 extends Control
 
-onready var OpenButton = $InfoBox/VBoxContainer/OpenButton
-onready var MSG_Text = $InfoBox/InfoMSG
+onready var OpenButton = $VBoxContainer/OpenButton
+onready var MSG_Text = $InfoLabelMSG/Info
 
 onready var SpinKasten: SpinBox = $DetailsDialog/HSlider/SpinBox
 onready var Regler: HSlider = $DetailsDialog/HSlider
@@ -17,7 +17,7 @@ const Divider32: int = 32
 
 func _ready():
 	
-	OpenButton.grab_focus()
+	$VBoxContainer/OpenButton.grab_focus()
 	
 	# Bestimmte Datei Erweiterung (.txt) voreinstellen.
 	
