@@ -7,6 +7,8 @@ onready var SpinKasten: SpinBox = $DetailsDialog/HSlider/SpinBox
 onready var Regler: HSlider = $DetailsDialog/HSlider
 onready var DetailsMSG: WindowDialog = $DetailsDialog
 
+
+
 var aes = AESContext.new()
 var my_password:String
 
@@ -241,5 +243,15 @@ func _on_SpinBox_value_changed(value):
 func _on_Button_pressed():
 	
 	DetailsMSG.hide()
+	
+	pass # Replace with function body.
+
+
+func _on_ButtonCallDialog_pressed():
+	
+	# $"/root/MyButton/TMeldung".popup()
+	$TMeldung.popup()
+	
+	
 	
 	pass # Replace with function body.

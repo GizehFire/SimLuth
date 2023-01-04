@@ -112,10 +112,10 @@ readonly = true
 [node name="CounterButton" type="Button" parent="."]
 anchor_top = 11.25
 anchor_bottom = 11.25
-margin_left = 524.0
-margin_top = -6263.0
-margin_right = 676.0
-margin_bottom = -6235.0
+margin_left = 513.0
+margin_top = -6438.0
+margin_right = 665.0
+margin_bottom = -6418.0
 text = "Counter"
 
 [node name="AutoFillButton" type="Button" parent="."]
@@ -232,6 +232,35 @@ margin_left = 40.0
 margin_right = 402.0
 margin_bottom = 14.0
 
+[node name="ButtonCallDialog" type="Button" parent="."]
+margin_left = 196.0
+margin_top = 85.0
+margin_right = 304.0
+margin_bottom = 105.0
+text = "Rufe Dialog auf"
+
+[node name="TMeldung" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.5
+margin_top = -110.5
+margin_right = 140.5
+margin_bottom = 110.5
+window_title = "TestDialog:"
+
+[node name="Button" type="Button" parent="TMeldung"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -65.0
+margin_top = -10.0
+margin_right = 65.0
+margin_bottom = 10.0
+text = "Ok"
+
 [connection signal="file_selected" from="SaveDialog" to="." method="_on_SaveDialog_file_selected"]
 [connection signal="file_selected" from="OpenDialog" to="." method="_on_OpenDialog_file_selected"]
 [connection signal="pressed" from="EnCryptButton" to="." method="_on_EnCryptButton_pressed"]
@@ -246,3 +275,4 @@ margin_bottom = 14.0
 [connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ResetButton" to="." method="_on_ResetButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="ButtonCallDialog" to="." method="_on_ButtonCallDialog_pressed"]
